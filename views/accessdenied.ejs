@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/jquery/dist/jquery.js"></script>
+<title>Access denied</title> -->
+    <%- include('header.ejs') %>
+    <style>
+      .access-denied-container {
+        min-height: 100vh;
+        /* Full height of the viewport */
+        display: flex;
+        align-items: center;
+        /* Vertical center alignment */
+        justify-content: center;
+        /* Horizontal center alignment */
+      }
+
+      .access-denied-message {
+        text-align: center;
+      }
+
+      .dashboard-link {
+        color: #0d6efd;
+        /* Bootstrap primary color */
+        text-decoration: none;
+      }
+
+      .dashboard-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container access-denied-container">
+      <div class="row">
+        <div class="col-12 access-denied-message">
+          <h1>Access Denied</h1>
+          <hr />
+          <p>You cannot access the website with this URL.</p>
+          <p>Please open IoTO Devices Control application on your desktop.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

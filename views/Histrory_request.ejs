@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('header.ejs') %>
+
+  <style>
+    .cursorpointer {
+      cursor: pointer;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      filter: invert(100%);
+    }
+
+    table,
+    td {
+      text-align: center;
+    }
+
+    #exampleModalToggle .carousel-item img {
+      max-height: 300px;
+      max-width: 100%;
+      object-fit: contain;
+      justify-content: center;
+    }
+
+    .table1 {
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <%- include('navbar.ejs') %>
+
+  <section>
+    <div class="container mt-5">
+      <div class="row g-1 d-flex justify-content-center text-center">
+        <h3>History Request All</h3>
+        <div class="col">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="inputSearch">
+        </div>
+        <div class="col-1" >
+          <button class="btn btn-sm bg-body-secondary " style="width: 5rem; height: 2.3rem;" id="btnsearch" type="button"><b>Search</b></button> 
+        </div>
+     
+      </div>
+    </div>
+  </section>
+  <section id="viewitem">
+    <div class="container-fluid text-center my-5">
+      <div class="table-responsive">
+        <table
+          class="table table-sm table-bordered table-hover text-center text-capitalize table table-striped cursorpointer"
+          id="table">
+          <thead>
+            <tr style="font-size: 14px;">
+              <th scope="col">No</th>
+              <th scope="col">Status</th>
+              <th scope="col" >Request</th>
+              <th scope="col" class="text-nowrap">Item Code</th>
+              <th scope="col">Category</th>
+              <th scope="col">Quantity </th>
+              <th scope="col">Department</th>
+              <th scope="col">Inchage</th>
+              <th scope="col">Request By</th>
+              <th scope="col">UpdateDate</th>
+              <th scope="col">DueDate</th>
+            </tr>
+          </thead>
+
+          <tbody id="TableRemain"></tbody>
+        </table>
+      </div>
+    </div>
+
+  
+
+  </section>
+
+  <!-- QR-Code -->
+  <div class="modal fade" id="modalQrCodeForPicking" aria-labelledby="exampleModalToggleLabel" tabindex="-1"
+    aria-hidden="true" style="display: none">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <div id="reader"></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end -->
+
+ <!-- modal -->
+ <div class="modal fade" id="exampleModalToggle" aria-labelledby="exampleModalToggleLabel" tabindex="-1"
+ aria-hidden="true" style="display: none">
+ <div class="modal-dialog modal-lg modal-dialog-centered">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+         List NewDevice
+       </h1>
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+       <div class="row align-items-center">
+         <div class="col ">
+           <div class="col">
+             <div id="carouselExample" class="carousel slide">
+               <div class="carousel-inner">
+                 <div class="carousel-item active">
+                   <img src=" " id="PictureDevice" class="d-block w-100" alt="...">
+                 </div>
+               </div>
+               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                 data-bs-slide="prev">
+                 <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+                 <span class="visually-hidden">Previous</span>
+               </button>
+               <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                 data-bs-slide="next">
+                 <span class="carousel-control-next-icon " aria-hidden="true"></span>
+                 <span class="visually-hidden">Next</span>
+               </button>
+             </div>
+           </div>
+
+          
+         </div>
+
+         <div class="col">
+
+         
+
+           <div class="row mb-3">
+             <label for="colFormLabel" class="col-sm-4 col-form-label" id="itemName">ItemCode</label>
+             <div class="col-sm-8">
+               <input type="ItemCode" class="form-control" id="textitemName" placeholder="ItemCode" disabled="" >
+             </div>
+           </div>
+
+        
+
+           <div class="row mb-3">
+             <label for="colFormLabel" class="col-sm-4 col-form-label" id="category">Category</label>
+             <div class="col-sm-8">
+               <input type="Request" class="form-control" id="textcategory" placeholder="Category" disabled="" >
+             </div>
+           </div>
+
+           <div class="row mb-3">
+             <label for="colFormLabel" class="col-sm-4 col-form-label" id="type">Type</label>
+             <div class="col-sm-8">
+               <textarea class="form-control" rows="2" id="textType" disabled="" ></textarea>
+             </div>
+           </div>
+
+
+           <div class="row mb-3">
+             <label for="colFormLabel" class="col-sm-4 col-form-label" id="remark">Remark</label>
+             <div class="col-sm-8">
+              <textarea  class="form-control" rows="2" id="textRemark" placeholder="Remark"  disabled=""></textarea>
+             </div>
+           </div>
+
+           <div class="row mb-3">
+            <label for="colFormLabel" class="col-sm-4 col-form-label" id="remark">Position</label>
+            <div class="col-sm-8">
+              <input type="Request" class="form-control" id="textPosition" placeholder="Position" disabled="" >
+            </div>
+          </div>
+         </div>
+       </div>
+     </div>
+     <div class="modal-footer">
+  
+       <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" id="btnClose">
+         Close
+       </button>
+     </div>
+   </div>
+ </div>
+</div>
+<!-- end modal -->
+</body>
+
+<!-- <script src="RequestHistory.js"></script> -->
+<script>
+
+  var inputSearch = document.getElementById('inputSearch');
+  var btnsearch = document.getElementById('btnsearch');
+  var selectRequest = document.getElementById('selectRequest');
+  var textitemName = document.getElementById('textitemName');
+var textcategory = document.getElementById('textcategory');
+var textType = document.getElementById('textType');
+var textQuantity = document.getElementById('textQuantity');
+var textRemark = document.getElementById('textRemark');
+var nameMoveToDept = document.getElementById('nameMoveToDept');
+var nameManager = document.getElementById('nameManager');
+var nameIncharge = document.getElementById('nameIncharge');
+const PictureDevice = document.getElementById('PictureDevice')
+
+  // get the modal and get value html table to input modal
+  let modal = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("Modal initialized");
+    listRequest()
+
+
+  // เพิ่มเหตุการณ์คลิกให้กับแถวในตาราง
+  document.getElementById("table").addEventListener("click", async function (e) {
+    // ตรวจสอบว่าคลิกที่ td หรือไม่
+    if (e.target.tagName === "TD") {
+      // ดึงข้อมูลในแต่ละเซลล์ของแถวนี้
+      let cells = Array.from(e.target.parentNode.children);
+      // แปลงข้อมูลในเซลล์เป็นอาร์เรย์ของข้อความ
+      let cellTexts = cells.map(function (cell) {
+        return cell.innerText;
+      });
+
+      // กำหนดค่าของ input fields ใน modal
+      const files = await fetchAttachedFiles(cellTexts[3]);
+    //C:\Users\p8344\Desktop\Iot_devices\public\photo
+    PictureDevice.src = `/photo/${cellTexts[3]}/${files[0]}`;
+      document.getElementById("textitemName").value = cellTexts[3];
+      selectDataByitemcode(cellTexts[3]) 
+      document.getElementById("textcategory").value = cellTexts[4];
+      //  document.getElementById("textDescription").value = cellTexts[3];
+      // document.getElementById("QuantityDisabled").value = cellTexts[5];
+   
+  
+      // แสดง modal
+      modal.show();
+    }
+  });
+});
+
+
+
+  // close modern
+  var Closebtn = document.getElementById('btnClose');
+  Closebtn.addEventListener('click', function () {
+    var modalElement = document.getElementById('exampleModalToggle'); // หา element ของ modal
+    var modalInstance = bootstrap.Modal.getInstance(modalElement); // สร้าง instance ของ modal
+    modalInstance.hide(); // ปิด modal
+  });
+
+  // Qr-Code
+  let html5QrCode;
+  $('#btnOpenModal').click(function () {
+    $('#modalQrCodeForPicking').modal('show');
+    html5QrCode = new Html5Qrcode("reader");
+  });
+
+  $('#modalQrCodeForPicking').on('shown.bs.modal', function () {
+    const config = { fps: 30, qrbox: { width: 400, height: 400 } };
+    Html5Qrcode.getCameras().then(devices => {
+      if (devices && devices.length) {
+        var cameraId = devices[0].id;
+        html5QrCode.start(cameraId, config, onScanSuccess, onScanFailure)
+          .catch((err) => {
+            console.error("Failed to start scanning", err);
+          });
+      }
+    }).catch((err) => {
+      console.error("Failed to get cameras", err);
+    });
+  });
+
+  $('#modalQrCodeForPicking').on('hidden.bs.modal', function () {
+    html5QrCode.stop().then(() => {
+      console.log("QR scanning stopped.");
+    }).catch((err) => {
+      console.error("Failed to stop scanning", err);
+    });
+  });
+
+  function onScanSuccess(decodedText, decodedResult) {
+    document.getElementById('tb_MaterialQRCode').value = decodedText;
+    var changeEvent = new Event("change");
+    document.getElementById('tb_MaterialQRCode').dispatchEvent(changeEvent);
+    $('#modalQrCodeForPicking').modal('hide');
+  }
+
+  function onScanFailure(error) {
+    console.warn(`QR scan error = ${error}`);
+  }
+  // EndCode
+
+
+  // //config
+  btnsearch.addEventListener('click', async () => {
+    console.log(inputSearch.value)
+    const res = await axios.post('/devices/SearchDeviceRequest', {
+      keywords: inputSearch.value
+    })
+    let html = '';
+    let n = 1
+    res.data.forEach(item => {
+      html += `
+    <tr>
+     
+      <th scope="row">${n}</th>
+            <td class="text-nowrap">${item.Status}</td>
+            <td>${item.Request}</td>
+            <td class="text-nowrap">${item.ItemCode}</td>
+            <td class="text-nowrap table1" >${item.Category}</td>
+            <td>${item.Quantity}</td>
+            <td>${item.Department}</td>
+            <td class="text-nowrap">${item.RequestBy}</td>
+            <td class="text-nowrap">${item.BorrowDate}</td>
+            <td class="text-nowrap">${item.UpdateDate}</td>
+            <td class="text-nowrap">${item.DueDate}</td>
+          </tr>
+    `
+      n++
+      // console.log(item.Category);
+    });
+    $("#TableRemain").html(html)
+    // searchinputdevice()
+    // alert(search.value)
+  })
+
+
+
+  async function listRequest() {
+    const res = await axios.get('/devices/listRequest')
+    // console.log(res.data)
+    let html = '';
+    let n = 1
+    res.data.forEach(item => {
+      html += `
+    <tr style="font-size: 13px;">
+            <th scope="row">${n}</th>
+            <td class="text-nowrap">${item.Status}</td>
+            <td>${item.Request}</td>
+            <td class="text-nowrap">${item.ItemCode}</td>
+            <td class="text-nowrap table1" >${item.Category}</td>
+            <td>${item.Quantity}</td>
+            <td>${item.Department}</td>
+            <td class="text-nowrap">${item.InCharge}</td>
+            <td class="text-nowrap">${item.RequestBy}</td>
+            <td class="text-nowrap">${item.UpdateDate}</td>
+            <td class="text-nowrap">${item.DueDate}</td>
+          </tr>
+    `
+      n++
+      // console.log(item.Category);
+    });
+    $("#TableRemain").html(html)
+
+  }
+
+//select data into modal
+async function selectDataByitemcode(itemCode) {
+  const res = await axios.post('/devices/NewRequestModal',{
+    keywords: itemCode
+  })
+console.log (res.data[0])
+document.getElementById("textType").value = res.data[0].Type;
+document.getElementById("textRemark").value = res.data[0].Remark;
+document.getElementById("textPosition").value = res.data[0].Position;
+
+
+}
+  
+// ********************************* Show photo ************************************//
+ 
+
+ 
+async function fetchAttachedFiles(registerNo) {
+  try {
+    const response = await axios.post('/devices/files', { RegisterNo: registerNo });
+
+    // return
+    // console.log(response.data);
+    // console.log(response.data.files);
+    // response.data.files.forEach(element =>{
+    //   console.log(element);
+    // })
+    return response.data.files;
+  } catch (error) {
+    console.error('Error fetching attached files:', error);
+    return [];
+  }
+}
+// ********************************* end show photo ************************************//
+
+// //select request in modal
+// async function selectdepinmodal() {
+//   const res = await axios.get('/devices/selectdep')
+//   let html = '';
+//   html ='<option>Select Dept</option>'
+//   res.data.forEach(item => {
+//     html += `
+//     <option value="${item.Department}">${item.Department}</option>`
+//     // console.log(item.Category);
+//   });
+//   $("#TableRemain").html(html)
+// }
+</script>
+
+</html>

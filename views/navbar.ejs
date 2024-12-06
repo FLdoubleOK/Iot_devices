@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d6d5d3">
+  <div class="container-fluid">
+    <a class="navbar-brand"><img src="/photo/LOGO_DevicesControl3.png" alt="" style="height: 40px" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold style="font-size: 18px">
+        <% if (userInfoRoleID!==2){ %>
+        <li class="nav-item active">                                                                                                                                                                                                                                                                                                                                           
+          <a class="nav-link" id="index" href="/devices/request">New Request<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="Status_request" href="/devices/pending">Pending <span id="countPending"
+              class="badge text-bg-danger">
+              <%= countPending %>
+            </span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="requesthistrory" href="/devices/history">History</a>
+        </li>
+
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Receiving
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" id="addQtyDevices" href="/devices/AddQtyPage">Add Quantity</a>
+            </li>
+            <li>
+              <a class="dropdown-item" id="addNewPage" href="/devices/AddNewPage">Add New Device</a>
+            </li>
+          </ul>
+        </li>
+        <% } %>
+        <% if (userInfoRoleID !==4 && userInfoRoleID !==2){ %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Staff <span id="countRequest" class="badge text-bg-danger">
+              <%= SumNumberRequestStaff %>
+            </span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" id="NewRequest" href="/devices/NewRequestPage">New Request <span
+                  id="countWaitConfirmRequest" class="badge text-bg-danger">
+                  <%= countWaitConfirmRequest %>
+                </span></a>
+            </li>
+            <li>
+              <a class="dropdown-item" id="NewDvice" href="/devices/NewDevicesPage">New Device <span id="countNewDevice"
+                  class="badge text-bg-danger">
+                  <%= countNewDevice %>
+                </span></a>
+            </li>
+            <li>
+              <a class="dropdown-item" id="NewDvice" href="/devices/listOrderwaitsend">Order Device <span id="countOrderDevice"
+                  class="badge text-bg-danger">
+                  <%= countOrderDevice %>
+                </span></a>
+            </li>
+          </ul>
+        </li>
+        <% } %>
+        <% if (userInfoRoleID===2 || userInfoRoleID===1){ %>
+          <li class="nav-item">
+            <a class="nav-link " id="approved" href="/devices/ApprovedPage">Approve <span id="countWaitApprove"
+                class="badge text-bg-danger">
+                <%= countWaitApprove %>
+              </span></a>
+          </li>
+          <% } %>
+            <li class="nav-item">
+              <a class="nav-link" id="dashboard"
+                href="http://10.10.154.186:8787/motionboard/sso?extid=mbsso&id=useridc@local&pw=123456&boardpath=%2FNTC%2FMED%2FIoTO%2FIoTO%20Device%20Monitoring%2FIoTO%20Device%20Control%20Dashboard"
+                target="_blank">Dashboard</a>
+            </li>
+      </ul>
+      <ul class="nav">
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 nav-font-color">
+            <span class="navbar-text nav-font-color nav-nid" id="lbID">
+              <%= userInfo %>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

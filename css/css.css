@@ -1,0 +1,185 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .container {
+    /* จัดตำแหน่งซ้ายขวาให้อยู่ตรงกลาง */
+    margin: 0 auto;
+  }
+
+
+
+  /* แถบหัวข้อ */
+  nav {
+    padding: 1rem;
+    background-color: #333;
+    width: 100%;
+  }
+
+  .nav-con {
+     display: flex;
+    /* จัดแกนแนวนอน */
+    justify-content: space-between;
+    /* จัดแกนแนวตั้ง */
+    align-items: center; 
+  }
+
+  /* iot device  */
+  .Logo h1 {
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    font-family: 'Josefin Sans', sans-serif;
+    
+  }
+
+  /* ช่องค้นหา */
+  input {
+    width: 250px;
+    height: 30px;
+    padding: 0 5px;
+    transition: .5s;
+    margin-right: 0.5rem;
+    border-radius: 8px;
+  }
+
+  input:focus {
+    width: 300px;
+    transition: .5s;
+  }
+
+  /* ปุ่มกดค้นหา */
+  .search button {
+    width: 85px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #4b4b4b;
+    color: white;
+    /* ขอบมน */
+    margin-right: 0.5rem;
+    border-radius: 8px; 
+    transition: .5s;
+  }
+
+  /* เอฟเฟ็กปุ่มกดค้นหา */
+  .search button:hover{
+    background-color: aliceblue;
+    color: black;
+    transition: .5s;
+  }
+
+  /* ตะกร้ารูปicon */
+  .Add button {
+    width: 85px;
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    /* ขอบมน */
+    margin-right: 0.5rem;
+    border-radius: 8px; 
+    transition: .5s;
+  }
+
+  /* เอฟเฟ็กicon */
+  .Add button:hover{
+    color: rgb(255, 255, 255);
+    background-color: #807f7f;
+    transition: .5s;
+  }
+  
+  /* กำหนดกรอบ */
+  .container-a {
+    max-width: 1140px;
+    /* จัดตำแหน่งซ้ายขวาให้อยู่ตรงกลาง */
+    margin: 0 auto;
+  }
+
+  /* แถบ icon */
+  .menu{
+    display: flex;
+    background-color: #a39d9d;
+   
+  }
+
+
+  /* จัดรูปแบบ icon แสดงหมวดหมู่ */
+  .menu-con {
+    display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+   grid-gap: 2rem;
+   padding: 2rem;
+
+  }
+  
+  
+  /* ตั้งค่าขนาดรูป icon */
+  .menu-item img {
+    width: 80px;
+    height: 80px;
+    margin-right: 0.5rem;
+    border-radius: 8px; 
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* setting text icon เมนู choice */
+  .menu-item a {
+    font-size: small;
+    text-decoration: none;
+    color: black;
+   
+  }
+
+  .menu-item a:hover {
+    color: white;
+  }
+
+
+  /* กำหนดระยะแสดง devices */
+  .item-con {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    padding: 2rem;
+    background-color: #333;
+    
+  }
+
+  
+  /* กำหนดระยะภาพแสดงdevices */
+.item-pic img {
+    width: 250px;
+    height: 250px;
+    margin-right: 0.5rem;
+    border-radius: 20px; 
+     border: 5px solid #c0bfbf;
+
+}
+ 
+
+/* กำหนดรูปแบบปุ่ม Add,more detail */
+.item-pic button {
+    width: 131px;
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    /* ขอบมน */
+    margin-right: 0.5rem;
+    border-radius: 8px; 
+    transition: .5s;
+    
+}
+
+/*  */
+.item-pic button:hover {
+    color: rgb(10, 10, 10);
+    background-color: #4f4a8b;
+    transition: .5s;
+}
+
+
+
+

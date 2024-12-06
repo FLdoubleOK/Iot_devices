@@ -1,0 +1,28 @@
+.cursorpointer {
+    cursor: pointer;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    filter: invert(100%);
+  }
+
+  table,
+  td {
+    text-align: center;
+  }
+
+  .text {
+    text-align: left;
+  }
+
+  #exampleModalToggle .carousel-item img {
+    max-height: 300px;
+    max-width: 100%;
+    object-fit: contain;
+    justify-content: center;
+  }
+
+.carousel-inner img {
+  justify-content: center;
+}

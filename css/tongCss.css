@@ -1,0 +1,29 @@
+.disabledField {
+    background-color: #ffffff; /* สีดำ */
+    color: #aaa7a7; /* สีข้อความเป็นสีขาว */
+  }
+  
+  .enabledField {
+    background-color: #FFFFFF; /* สีขาว */
+    color: #000000; /* สีข้อความเป็นสีดำ */
+  }
+  
+      .cursorpointer{
+               cursor: pointer;
+    }
+  
+    .carousel-control-prev-icon, .carousel-control-next-icon { filter: invert(100%); }
+  table, td {
+    text-align: center;
+  }
+  
+  .table1 {
+    text-align: left;
+  }
+  
+  #exampleModalToggle .carousel-item img {
+    max-height: 300px;
+    max-width: 100%;
+    object-fit: contain;
+    justify-content: center;
+  }

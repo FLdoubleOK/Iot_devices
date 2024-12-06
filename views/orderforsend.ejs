@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('header.ejs') %>
+    <link href="/public//style/myCss.css" />
+  </head>
+
+  <body>
+    <%- include('navbar.ejs') %>
+    <section id="viewitem">
+      <div class="container-fluid text-center my-3 text-center">
+        <div class="container px-4 text-center my-2">
+          <div class="row gx-5">
+            <div class="col">
+              <p class="text-center" style="font-size: 2rem">
+                <b>Pending Requests</b>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <table
+          class="table table-sm table-bordered table-hover text-center text-capitalize table table-striped cursorpointer align-middle"
+          style="font-size: 14px"
+          id="table"
+        >
+          <thead class="table-warning">
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">ID</th>
+              <th scope="col">Request</th>
+              <th scope="col">Itemcode</th>
+              <th scope="col">Category</th>
+              <th scope="col">Type</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">RequestBy</th>
+              <th scope="col">Department</th>
+              <th scope="col" class="text-nowrap">In Charge</th>
+              <th scope="col" class="text-nowrap" style="width: 6rem">Date</th>
+            </tr>
+          </thead>
+
+          <tbody id="tableOrder"></tbody>
+        </table>
+      </div>
+      <!-- QR-Code -->
+      <div
+        class="modal fade"
+        id="modalQrCodeForPicking"
+        aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1"
+        aria-hidden="true"
+        style="display: none"
+      >
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="container-fluid">
+                <div class="row justify-content-center">
+                  <div id="reader"></div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-sm btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- modal -->
+      <div
+        class="modal fade"
+        id="exampleModalToggle"
+        aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1"
+        aria-hidden="true"
+        style="display: none"
+      >
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+                list Order
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="modal-body">
+              <div class="row align-items-center">
+                <div class="col">
+                  <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                      <div class="carousel-item-active">
+                        <img
+                          src=" "
+                          id="PictureDevice"
+                          class="d-block mx-auto"
+                          style="width: 15rem; height: 15rem"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <button
+                      class="carousel-control-prev"
+                      type="button"
+                      data-bs-target="#carouselExample"
+                      data-bs-slide="prev"
+                    >
+                      <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                      class="carousel-control-next"
+                      type="button"
+                      data-bs-target="#carouselExample"
+                      data-bs-slide="next"
+                    >
+                      <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+
+                  <div class="mb-3 row mt-2">
+                    <label
+                      class="col-form-label"
+                      id="Description"
+                      for="floatingtypeInputDisabled"
+                      >Description</label
+                    >
+                    <div class="col-sm">
+                      <textarea
+                        class="form-control"
+                        rows="7"
+                        id="textDescription"
+                        disabled=""
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="mb-3 row">
+                    <label
+                      class="col-sm-4 col-form-label"
+                      id="typeRequest"
+                      for="floatingtypeInputDisabled"
+                      >Request</label
+                    >
+                    <div class="col-sm-8">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="textRequest"
+                        placeholder="Request"
+                        disabled=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mb-3 row">
+                    <label
+                      class="col-sm-4 col-form-label"
+                      id="itemName"
+                      for="floatingInputDisabled"
+                      >Item Code</label
+                    >
+                    <div class="col-sm-8">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="textitemName"
+                        placeholder="ItemCode"
+                        disabled=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mb-3 row">
+                    <label
+                      class="col-sm-4 col-form-label"
+                      id="category"
+                      for="floatingCatInputDisabled"
+                      >Category</label
+                    >
+                    <div class="col-sm-8">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="textcategory"
+                        placeholder="Category"
+                        disabled=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mb-3 row">
+                    <label
+                      class="col-sm-4 col-form-label"
+                      id="type"
+                      for="floatingtypeInputDisabled"
+                      >Type</label
+                    >
+                    <div class="col-sm-8">
+                      <textarea
+                        type="text"
+                        class="form-control"
+                        id="textType"
+                        rows="2"
+                        placeholder="Type"
+                        disabled=""
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <div class="mb-3 row" id="movetodeptField">
+                    <label class="col-sm-4 col-form-label" for="nameMoveToDept"
+                      >Department</label
+                    >
+                    <div class="col-sm-8">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nameMoveToDept"
+                        placeholder="Department"
+                        disabled=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="mb-3 row" id="quantityField">
+                    <label class="col-sm-4 col-form-label" id="quantity"
+                      >Quantity</label
+                    >
+                    <div class="col">
+                      <input
+                        class="form-control"
+                        type="text"
+                        id="textQuantity"
+                        placeholder="Quantity"
+                        aria-label="default input example"
+                        disabled=""
+                      />
+                    </div>
+                    <div class="col-sm-8"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-success"
+                id="btnSave"
+                data-dismiss="modal"
+              >
+                Save
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="btnClose"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end model -->
+    </section>
+  </body>
+  <script src="/js/jsOrderDevice.js"></script>
+</html>

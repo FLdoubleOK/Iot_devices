@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('header.ejs') %>
+  <style>
+    .cursorpointer{
+             cursor: pointer;
+  }
+
+  .carousel-control-prev-icon, .carousel-control-next-icon { filter: invert(100%); }
+table, td {
+  text-align: center;
+}
+
+.table1 {
+  text-align: left;
+}
+
+.w-box{
+  width: 300px;
+}
+#exampleModalToggle .carousel-item img {
+  max-height: 300px;
+  max-width: 100%;
+  object-fit: contain;
+  justify-content: center;
+}
+
+  
+ </style>
+  
+</head>
+
+<body>
+  <%- include('navbar.ejs') %>
+
+  <section id="viewitem">
+    <div class="container-fluid text-center mt-5 px-5">
+      <div class="container px-4 text-center my-5 ">
+        <div class="col ">
+          <p><h3>History Device </h3></p>
+         </div>
+        <div class="row gx-5 ">
+          <div class="col pt-3">
+            <div class="container-fluid">
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                  style="height: 2.3rem;" id="inputSearch">
+                <button class="btn bg-body-secondary btn-sm" id="btnsearch" type="button">Search</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+  <div class="table-responsive">  
+     <table class="table table-sm table-bordered table-hover text-center text-capitalize table table-striped cursorpointer"
+      id="table">
+   
+     
+        <thead style="font-size: 10px;">
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">ID</th>
+            <th scope="col">Position</th>
+            <th scope="col">ItemCode</th>
+            <th scope="col">Category</th>
+            <th scope="col">type</th>
+            <th scope="col" class="text-nowrap" >Vendor name</th>
+            <th scope="col">remain</th>
+            <th scope="col" class="text-nowrap">Total Received </th>
+            <th scope="col" class="text-nowrap" >Total Remain</th>
+            <th scope="col" class="text-nowrap">Price (Unit) </th>
+            <th scope="col" class="text-nowrap">Price Total </th>
+            <th scope="col" class="text-nowrap">Update by</th>
+            <th scope="col">create Date </th>
+            
+          </tr>
+        </thead>
+
+        <tbody id="tablehistory">
+        </tbody>
+      </table></div>
+ 
+   
+    </div>
+      
+     
+  
+
+
+
+
+  </section>
+    <!-- modal -->
+    <div class="modal fade" id="exampleModalToggle" aria-labelledby="exampleModalToggleLabel" tabindex="-1"
+    aria-hidden="true" style="display: none">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+            List NewDevice
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row align-items-center">
+            <div class="col ">
+              <div class="col">
+                <div id="carouselExample" class="carousel slide">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src=" " id="PictureDevice" class="d-block w-100" alt="...">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon " aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+
+             
+            </div>
+
+            <div class="col">
+
+            
+
+              <div class="row mb-3">
+                <label for="colFormLabel" class="col-sm-4 col-form-label" id="itemName">ItemCode</label>
+                <div class="col-sm-8">
+                  <input type="ItemCode" class="form-control" id="textitemName" placeholder="ItemCode" disabled="" >
+                </div>
+              </div>
+
+           
+
+              <div class="row mb-3">
+                <label for="colFormLabel" class="col-sm-4 col-form-label" id="category">Category</label>
+                <div class="col-sm-8">
+                  <input type="Request" class="form-control" id="textcategory" placeholder="Category" disabled="" >
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="colFormLabel" class="col-sm-4 col-form-label" id="type">Type</label>
+                <div class="col-sm-8">
+                  <textarea class="form-control" rows="2" id="textType" disabled="" ></textarea>
+                </div>
+              </div>
+
+
+              <div class="row mb-3">
+                <label for="colFormLabel" class="col-sm-4 col-form-label" id="remark">Remark</label>
+                <div class="col-sm-8">
+                  <input type="Request" class="form-control" id="textRemark"  placeholder="Remark"  disabled="" >
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="colFormLabel" class="col-sm-4 col-form-label" id="Position">Position</label>
+                <div class="col-sm-8">
+                  <input type="Request" class="form-control" id="textPosition" placeholder="Position"   >
+                </div>
+              </div>
+
+              
+
+              
+             
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+     
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" id="btnSave">Save</button>
+          <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" id="btnClose">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end modal -->
+
+
+</body>
+<script src="/js/historycontrol.js"></script>
+</html>
